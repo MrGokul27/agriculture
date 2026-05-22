@@ -901,7 +901,7 @@ img {
 }
 
 .fone-card__label {
-  background: #fff;
+  background: #3d8040;
   padding: 22px 24px;
   text-align: center;
 }
@@ -912,12 +912,12 @@ img {
   color: #1a3c1a;
 }
 .fone-card__label h3 a {
-  color: #1a3c1a;
+  color: #fff;
   transition: color 0.3s;
 }
-.fone-card__label h3 a:hover {
+/* .fone-card__label h3 a:hover {
   color: #3d8040;
-}
+} */
 
 /* Card 3 — yellow/cream highlighted card */
 .fone-card--highlight {
@@ -1687,7 +1687,7 @@ img {
   z-index: 10;
   width: 44px;
   height: 44px;
-  background: #3d8040;
+  background: #3d804083;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1698,10 +1698,10 @@ img {
   transition: background 0.3s;
 }
 .tone-btn-prev {
-  left: -22px;
+  left: 1%;
 }
 .tone-btn-next {
-  right: -22px;
+  right: 1%;
 }
 .tone-btn-prev:hover,
 .tone-btn-next:hover {
