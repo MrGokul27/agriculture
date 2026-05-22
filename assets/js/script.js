@@ -1,0 +1,146 @@
+// PAGE LOADER
+(function () {
+  const loader = document.getElementById("agri-loader");
+  function hideLoader() {
+    loader.classList.add("loader-hidden");
+  }
+  // Hide after 2.8s max, or when page is fully loaded — whichever comes first
+  const timer = setTimeout(hideLoader, 2800);
+  window.addEventListener("load", function () {
+    clearTimeout(timer);
+    // Small delay so the bar visually completes
+    setTimeout(hideLoader, 2000);
+  });
+})();
+
+// HEADER COMPONENT
+fetch("components/header.html")
+  .then((res) => res.text())
+  .then((html) => {
+    document.getElementById("header-placeholder").innerHTML = html;
+    initHeader();
+  });
+
+function initHeader() {
+  // Mobile nested submenu toggle
+  document
+    .querySelectorAll(".dropdown-submenu > .dropdown-toggle")
+    .forEach((el) => {
+      el.addEventListener("click", function (e) {
+        if (window.innerWidth < 992) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.closest(".dropdown-submenu").classList.toggle("open");
+        }
+      });
+    });
+
+  // Sticky scroll style toggle
+  const navbar = document.getElementById("mainNavbar");
+  const scrollThreshold = 80;
+
+  function onScroll() {
+    if (window.scrollY > scrollThreshold) {
+      navbar.classList.remove("navbar-transparent");
+      navbar.classList.add("navbar-scrolled");
+    } else {
+      navbar.classList.remove("navbar-scrolled");
+      navbar.classList.add("navbar-transparent");
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll(); // run once on load
+}
+
+// SWIPER HERO
+const swiper = new Swiper(".heroSwiper", {
+  slidesPerView: 1,
+  loop: true,
+  effect: "fade",
+  fadeEffect: { crossFade: true },
+  autoplay: { delay: 7000, disableOnInteraction: false },
+  pagination: {
+    el: "#main-slider-pagination",
+    type: "bullets",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: "#main-slider__swiper-button-next",
+    prevEl: "#main-slider__swiper-button-prev",
+  },
+});
+
+// SWIPER PROJECTS
+new Swiper(".projectsSwiper", {
+  loop: true,
+  autoplay: { delay: 3500, disableOnInteraction: false },
+  pagination: { el: ".projects-one__dots", clickable: true },
+  breakpoints: {
+    0: { slidesPerView: 1, spaceBetween: 20 },
+    576: { slidesPerView: 2, spaceBetween: 24 },
+    992: { slidesPerView: 3, spaceBetween: 30 },
+    1200: { slidesPerView: 4, spaceBetween: 30 },
+  },
+});
+
+// SWIPER TESTIMONIALS
+new Swiper(".testimonialsSwiper", {
+  loop: true,
+  autoplay: { delay: 4000, disableOnInteraction: false },
+  spaceBetween: 30,
+  navigation: { nextEl: ".tone-btn-next", prevEl: ".tone-btn-prev" },
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+  },
+});
+
+// COUNTER ANIMATION
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute("data-count"));
+  const duration = 2000;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = Math.floor(current).toLocaleString();
+  }, 16);
+}
+
+// Trigger counter when it enters viewport
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.5 },
+);
+
+document
+  .querySelectorAll(".counter")
+  .forEach((el) => counterObserver.observe(el));
+
+// GLOBAL REDIRECT FOR PLACEHOLDER LINKS
+document.addEventListener("click", function (e) {
+  const target = e.target.closest("a");
+  if (target && target.getAttribute("href") === "#") {
+    // Skip if it's a dropdown toggle (Bootstrap functionality)
+    if (
+      target.hasAttribute("data-bs-toggle") ||
+      target.classList.contains("dropdown-toggle")
+    ) {
+      return;
+    }
+    e.preventDefault();
+    window.location.href = "404.html";
+  }
+});

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login — AgriFarm</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="auth-body">
+    <div class="auth-page">
+      <!-- Left Panel -->
+      <div
+        class="auth-panel auth-panel--image"
+        style="
+          background-image: url(&quot;../assets/images/main-slider-v1-1.webp&quot;);
+        "
+      >
+        <div class="auth-panel__overlay"></div>
+        <div class="auth-panel__content">
+          <a href="../index.html" class="auth-nav__home">
+            <i class="fa fa-arrow-left me-1"></i>Back to Home
+          </a>
+          <div class="auth-panel__logo">
+            <img src="../assets/images/logoStackly.webp" alt="AgriFarm" />
+          </div>
+          <h2 class="auth-panel__title">Welcome Back <br />to AgriFarm</h2>
+          <p class="auth-panel__text">
+            Sign in to manage your farm, track harvests, and connect with the
+            agriculture community.
+          </p>
+          <div class="auth-panel__badges">
+            <span><i class="fa fa-leaf"></i> Organic</span>
+            <span><i class="fa fa-tractor"></i> Smart Farming</span>
+            <span><i class="fa fa-seedling"></i> Sustainable</span>
+          </div>
+        </div>
+        <div class="auth-panel__wave">
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            class="auth-blob"
+          >
+            <path
+              fill="rgba(155,225,93,0.12)"
+              d="M44.7,-62.3C56.2,-53.2,62.4,-37.5,66.2,-21.4C70,-5.3,71.4,11.2,65.5,24.8C59.6,38.4,46.4,49.1,32.1,56.5C17.8,63.9,2.4,68,-13.4,66.2C-29.2,64.4,-45.4,56.7,-56.3,44.5C-67.2,32.3,-72.8,15.6,-71.5,0C-70.2,-15.6,-62,-30.1,-51.2,-39.5C-40.4,-48.9,-27,-53.2,-13.2,-58.3C0.6,-63.4,33.2,-71.4,44.7,-62.3Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right Panel: Form -->
+      <div class="auth-panel auth-panel--form">
+        <div class="auth-form-wrap">
+          <div class="auth-form-header">
+            <span class="auth-form-tag"
+              ><i class="fa fa-sign-in-alt me-1"></i>Member Login</span
+            >
+            <h2>Sign In to Your Account</h2>
+            <p>
+              Don't have an account? <a href="register.html">Register here</a>
+            </p>
+          </div>
+
+          <form class="auth-form" action="#">
+            <!-- Role -->
+            <div class="auth-field">
+              <label><i class="fa fa-user-tag"></i> Role</label>
+              <div class="auth-select-wrap">
+                <select class="auth-input" required>
+                  <option value="" disabled selected>Select your role</option>
+                  <option>Farmer</option>
+                  <option>Agronomist</option>
+                  <option>Supplier</option>
+                  <option>Buyer</option>
+                  <option>Admin</option>
+                </select>
+                <i class="fa fa-chevron-down auth-select-arrow"></i>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="auth-field">
+              <label><i class="fa fa-envelope"></i> Email Address</label>
+              <input
+                type="email"
+                class="auth-input"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="auth-field">
+              <label><i class="fa fa-lock"></i> Password</label>
+              <div class="auth-input-wrap">
+                <input
+                  type="password"
+                  class="auth-input"
+                  id="loginPassword"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="auth-eye"
+                  onclick="togglePass('loginPassword', this)"
+                >
+                  <i class="fa fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember Me + Forgot -->
+            <div class="auth-row">
+              <label class="auth-check">
+                <input type="checkbox" />
+                <span class="auth-check-box"></span>
+                Remember me
+              </label>
+              <a href="#" class="auth-forgot">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="auth-btn">
+              <span>Sign In</span><i class="fa fa-arrow-right ms-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelector(".auth-form").addEventListener(
+        "invalid",
+        function (e) {
+          const el = e.target;
+          const label = el.closest(".auth-field")?.querySelector("label");
+          const name = label
+            ? label.textContent.trim().replace(/^[^a-zA-Z]+/, "")
+            : "This field";
+          el.setCustomValidity(name + " is required");
+        },
+        true,
+      );
+      document
+        .querySelector(".auth-form")
+        .addEventListener("change", function (e) {
+          e.target.setCustomValidity("");
+        });
+      document
+        .querySelector(".auth-form")
+        .addEventListener("input", function (e) {
+          e.target.setCustomValidity("");
+        });
+
+      function togglePass(id, btn) {
+        const inp = document.getElementById(id);
+        const isText = inp.type === "text";
+        inp.type = isText ? "password" : "text";
+        btn.querySelector("i").className = isText
+          ? "fa fa-eye"
+          : "fa fa-eye-slash";
+      }
+      document.addEventListener("click", function (e) {
+        const a = e.target.closest("a");
+        if (a && a.getAttribute("href") === "#") {
+          e.preventDefault();
+          window.location.href = "../404.html";
+        }
+      });
+    </script>
+  </body>
+</html>
