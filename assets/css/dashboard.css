@@ -1,0 +1,385 @@
+:root {
+  --sidebar-width: 280px;
+  --agri-dark: #17351d;
+  --agri-green: #4baf47;
+  --agri-light: #f5faf5;
+  --agri-yellow: #9be15d;
+  --white: #ffffff;
+  --text: #1f1f1f;
+  --text-light: #7a7a7a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom right, #f5faf5, #edf7ed);
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+}
+
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================================
+SIDEBAR
+========================================= */
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: linear-gradient(180deg, #17351d, #1f4727);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  transition: all 0.35s ease;
+  box-shadow: 8px 0 40px rgba(0, 0, 0, 0.12);
+
+  /* IMPORTANT */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Decorative Circles */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 260px;
+  height: 260px;
+  background: rgba(155, 225, 93, 0.08);
+  border-radius: 50%;
+}
+
+.sidebar::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 240px;
+  height: 240px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+}
+
+/* =========================================
+SIDEBAR HEADER
+========================================= */
+
+.sidebar-header {
+  padding: 35px 30px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.sidebar-header img {
+  max-width: 160px;
+}
+
+/* =========================================
+SCROLLABLE MENU
+========================================= */
+
+.sidebar-menu {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 15px 0 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom Scrollbar */
+.sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+MENU LINKS
+========================================= */
+
+.nav-link-custom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 28px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  position: relative;
+}
+
+.nav-link-custom i {
+  width: 20px;
+  font-size: 16px;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+  background: rgba(155, 225, 93, 0.12);
+  color: #ffffff;
+  border-left-color: var(--agri-yellow);
+  padding-left: 35px;
+}
+
+.nav-link-custom:hover i,
+.nav-link-custom.active i {
+  color: var(--agri-yellow);
+}
+
+/* =========================================
+SIDEBAR FOOTER
+========================================= */
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 35px;
+}
+
+.top-nav {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 18px 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-nav h4 {
+  font-weight: 800;
+  color: var(--text);
+}
+
+.role-badge {
+  background: rgba(75, 175, 71, 0.12);
+  color: var(--agri-green);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  height: 100%;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(75, 175, 71, 0.08);
+  border-radius: 50%;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(75, 175, 71, 0.12);
+}
+
+.stat-card h6 {
+  color: var(--text-light);
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.stat-card h3 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--agri-dark);
+  margin-bottom: 0;
+}
+
+/* Table Styles for Content */
+.agri-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+.agri-table th {
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+}
+.agri-table tr {
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+}
+.agri-table td {
+  padding: 18px 20px;
+  vertical-align: middle;
+  border: none;
+}
+.agri-table tr td:first-child {
+  border-radius: 12px 0 0 12px;
+}
+.agri-table tr td:last-child {
+  border-radius: 0 12px 12px 0;
+}
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.activity-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid #eef3ee;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(75, 175, 71, 0.12);
+  color: var(--agri-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.weather-card {
+  background: linear-gradient(135deg, #17351d, #28572d);
+  color: white;
+  border-radius: 26px;
+  padding: 35px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(23, 53, 29, 0.25);
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+}
+
+.weather-card h2 {
+  font-size: 58px;
+  font-weight: 800;
+  margin: 20px 0 10px;
+}
+
+.weather-icon {
+  font-size: 70px;
+  color: #ffc107;
+  margin-top: 15px;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    margin-left: calc(-1 * var(--sidebar-width));
+  }
+
+  .sidebar.active {
+    margin-left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .top-nav {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-nav {
+    border-radius: 18px;
+  }
+
+  .stat-card,
+  .activity-card,
+  .weather-card {
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .stat-card h3 {
+    font-size: 28px;
+  }
+
+  .weather-card h2 {
+    font-size: 42px;
+  }
+}

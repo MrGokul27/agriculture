@@ -73,15 +73,15 @@
           <form class="auth-form" action="#">
             <!-- Role -->
             <div class="auth-field">
-              <label><i class="fa fa-user-tag"></i> Role</label>
+              <label for="userRole"><i class="fa fa-user-tag"></i> Role</label>
               <div class="auth-select-wrap">
-                <select class="auth-input" required>
+                <select class="auth-input" id="userRole" required>
                   <option value="" disabled selected>Select your role</option>
-                  <option>Farmer</option>
-                  <option>Agronomist</option>
-                  <option>Supplier</option>
-                  <option>Buyer</option>
-                  <option>Admin</option>
+                  <option value="Farmer">Farmer</option>
+                  <option value="Agronomist">Agronomist</option>
+                  <option value="Supplier">Supplier</option>
+                  <option value="Buyer">Buyer</option>
+                  <option value="Admin">Admin</option>
                 </select>
                 <i class="fa fa-chevron-down auth-select-arrow"></i>
               </div>
@@ -93,6 +93,7 @@
               <input
                 type="email"
                 class="auth-input"
+                id="userEmail"
                 placeholder="you@example.com"
                 required
               />
@@ -129,7 +130,7 @@
               <a href="#" class="auth-forgot">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="auth-btn">
+            <button type="submit" class="auth-btn" id="loginBtn">
               <span>Sign In</span><i class="fa fa-arrow-right ms-2"></i>
             </button>
           </form>
@@ -139,6 +140,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      const loginForm = document.querySelector(".auth-form");
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Capture Data
+        const userData = {
+          role: document.getElementById("userRole").value,
+          email: document.getElementById("userEmail").value,
+        };
+
+        // Save to LocalStorage for the Dashboard to read
+        localStorage.setItem("agriUser", JSON.stringify(userData));
+
+        // Redirect to Dashboard
+        window.location.href = "dashboard.html";
+      });
+
       document.querySelector(".auth-form").addEventListener(
         "invalid",
         function (e) {
