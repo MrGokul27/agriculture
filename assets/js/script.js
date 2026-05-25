@@ -1,6 +1,17 @@
+// GLOBAL PAGE HELPERS
+const isSubPage = window.location.pathname.includes("/pages/");
+const is404 = window.location.pathname.includes("404.html");
+
 // PAGE LOADER
 (function () {
   const loader = document.getElementById("agri-loader");
+
+  // If we are NOT on the home page, remove the loader immediately if it exists
+  if (!loader || isSubPage || is404) {
+    if (loader) loader.style.display = "none";
+    return;
+  }
+
   function hideLoader() {
     loader.classList.add("loader-hidden");
   }
@@ -14,10 +25,30 @@
 })();
 
 // HEADER COMPONENT
-fetch("components/header.html")
+const headerPath = isSubPage
+  ? "../components/header.html"
+  : "components/header.html";
+fetch(headerPath)
   .then((res) => res.text())
   .then((html) => {
     document.getElementById("header-placeholder").innerHTML = html;
+    if (isSubPage) {
+      const nav = document.getElementById("header-placeholder");
+      nav.querySelectorAll("img[src]").forEach((img) => {
+        const src = img.getAttribute("src");
+        if (src && src.startsWith("assets/"))
+          img.setAttribute("src", "../" + src);
+      });
+      nav.querySelectorAll("a[href]").forEach((a) => {
+        const href = a.getAttribute("href");
+        if (href === "index.html") {
+          a.setAttribute("href", "../index.html");
+        } else if (href && href.startsWith("pages/")) {
+          // Remove the "pages/" prefix because we are already in the pages directory
+          a.setAttribute("href", href.replace("pages/", ""));
+        }
+      });
+    }
     initHeader();
   });
 
@@ -141,6 +172,6 @@ document.addEventListener("click", function (e) {
       return;
     }
     e.preventDefault();
-    window.location.href = "404.html";
+    window.location.href = isSubPage ? "../404.html" : "404.html";
   }
 });

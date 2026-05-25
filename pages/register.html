@@ -263,13 +263,6 @@
           ? "fa fa-eye"
           : "fa fa-eye-slash";
       }
-      document.addEventListener("click", function (e) {
-        const a = e.target.closest("a");
-        if (a && a.getAttribute("href") === "#") {
-          e.preventDefault();
-          window.location.href = "../404.html";
-        }
-      });
     </script>
   </body>
 </html>

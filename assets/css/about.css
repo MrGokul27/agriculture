@@ -1,0 +1,282 @@
+.page-header-about {
+  position: relative;
+  padding: 160px 0 80px;
+  background-size: cover;
+  background-position: center;
+}
+.page-header-about__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 36, 16, 0.72);
+}
+.page-header-about .container {
+  position: relative;
+  z-index: 1;
+}
+.page-header-about__inner h2 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+.page-header-about__breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+.page-header-about__breadcrumb li {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+}
+.page-header-about__breadcrumb li a {
+  color: #9be15d;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.page-header-about__breadcrumb li a:hover {
+  color: #fff;
+}
+.page-header-about__breadcrumb li i {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.about-three {
+  position: relative;
+  overflow: hidden;
+}
+.about-three__shape {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 60px solid rgba(61, 128, 64, 0.05);
+  pointer-events: none;
+}
+.about-three__subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  margin: 20px 0 12px;
+}
+.about-three__text {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+/* Feature list */
+.about-three__list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.about-three__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px;
+  background: #f5faf5;
+  border-radius: 10px;
+  border-left: 4px solid #3d8040;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+.about-three__list li:hover {
+  box-shadow: 0 8px 28px rgba(61, 128, 64, 0.1);
+  transform: translateX(4px);
+}
+.about-three__list-icon {
+  width: 52px;
+  height: 52px;
+  background: #3d8040;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.about-three__list-icon i {
+  font-size: 20px;
+  color: #fff;
+}
+.about-three__list-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+.about-three__list-body h3 a {
+  color: #1a3c1a;
+  transition: color 0.3s;
+}
+.about-three__list-body h3 a:hover {
+  color: #3d8040;
+}
+.about-three__list-body p {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* Image box */
+.about-three__img-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+.about-three__img-box-inner img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+.about-three__img-icon {
+  position: absolute;
+  bottom: 30px;
+  right: -20px;
+  width: 80px;
+  opacity: 0.6;
+}
+
+@media (max-width: 991px) {
+  .about-three__img-box-inner img {
+    height: 380px;
+  }
+  .about-three__img-icon {
+    right: 10px;
+  }
+}
+
+.meet-farmers {
+  background: #f5faf5;
+}
+.farmer-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.farmer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.13);
+}
+.farmer-card__img {
+  overflow: hidden;
+}
+.farmer-card__img img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.farmer-card:hover .farmer-card__img img {
+  transform: scale(1.06);
+}
+.farmer-card__info {
+  padding: 22px 20px 24px;
+}
+.farmer-card__info p {
+  font-size: 13px;
+  color: #3d8040;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 6px;
+}
+.farmer-card__info h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.farmer-card__info h2 a {
+  color: #1a3c1a;
+  transition: color 0.3s;
+}
+.farmer-card__info h2 a:hover {
+  color: #3d8040;
+}
+.farmer-card__socials {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.farmer-card__socials a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #dde8dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+.farmer-card__socials a:hover {
+  background: #3d8040;
+  border-color: #3d8040;
+  color: #fff;
+}
+
+.cta-one {
+  position: relative;
+  padding: 60px 0;
+  background-size: cover;
+  background-position: center;
+}
+.cta-one__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 36, 16, 0.82);
+}
+.cta-one .container {
+  position: relative;
+  z-index: 1;
+}
+.cta-one__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.cta-one__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.cta-one__icon i {
+  font-size: 48px;
+  color: #9be15d;
+}
+.cta-one__left h2 {
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+@media (max-width: 767px) {
+  .cta-one__wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cta-one__left {
+    flex-direction: column;
+  }
+}
