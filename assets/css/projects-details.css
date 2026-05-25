@@ -1,0 +1,112 @@
+.projects-details {
+  padding: 90px 0;
+}
+
+.projects-details__img img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+/* Info Bar */
+.projects-details__information {
+  background: #f5faf5;
+  border-radius: 12px;
+  padding: 35px 40px;
+  margin-bottom: 50px;
+}
+
+.projects-details__information ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.projects-details__information h5 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3d8040;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.projects-details__information p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a3c1a;
+  margin: 0;
+}
+
+.projects-details__information p a {
+  color: #1a3c1a;
+  transition: color 0.3s;
+}
+
+.projects-details__information p a:hover {
+  color: #3d8040;
+}
+
+/* Text Content */
+.projects-details__content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a3c1a;
+  margin-bottom: 20px;
+}
+
+.projects-details__text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+/* Challenges Section */
+.projects-details__challenges {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid #eee;
+}
+
+.challenges-list {
+  margin: 30px 0;
+}
+
+.challenges-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.challenges-list li i {
+  color: #3d8040;
+  font-size: 18px;
+}
+
+/* Pagination */
+.projects-details__pagination {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.projects-details__pagination a {
+  font-weight: 700;
+  color: #1a3c1a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+
+.projects-details__pagination a:hover {
+  color: #3d8040;
+}
