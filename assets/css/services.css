@@ -1,0 +1,120 @@
+/* FARMING SOLUTIONS */
+.farming-solutions {
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.farming-solutions__text {
+  color: #6c757d;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.farm-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background: #f7faf7;
+  padding: 20px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.farm-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.farm-feature-card__icon {
+  width: 60px;
+  height: 60px;
+  background: #4baf47;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.farm-feature-card h4 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #1f1f1f;
+}
+
+.farm-feature-card p {
+  margin: 0;
+  color: #6c757d;
+  line-height: 1.7;
+}
+
+.farming-solutions__images {
+  padding-left: 40px;
+}
+
+.farming-solutions__main-img img {
+  width: 100%;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.farming-solutions__small-img {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 180px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.farming-solutions__experience {
+  position: absolute;
+  top: 30px;
+  right: -20px;
+  background: #4baf47;
+  color: #fff;
+  padding: 25px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.farming-solutions__experience h3 {
+  font-size: 42px;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.farming-solutions__experience p {
+  margin: 5px 0 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  .farming-solutions__images {
+    padding-left: 0;
+    margin-top: 40px;
+  }
+
+  .farming-solutions__small-img {
+    width: 130px;
+    left: 10px;
+  }
+
+  .farming-solutions__experience {
+    right: 10px;
+    padding: 18px 20px;
+  }
+
+  .farming-solutions__experience h3 {
+    font-size: 30px;
+  }
+}

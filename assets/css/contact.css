@@ -1,0 +1,137 @@
+.contact-page {
+  padding: 90px 0;
+}
+
+.contact-page__left-text {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.8;
+  margin: 20px 0 30px;
+}
+
+.contact-page__social {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-page__social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f5faf5;
+  color: #3d8040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.contact-page__social a:hover {
+  background: #3d8040;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Form */
+.contact-form-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.contact-input-group {
+  margin-bottom: 20px;
+}
+
+.contact-input-group input,
+.contact-input-group textarea {
+  width: 100%;
+  background: #f5faf5;
+  border: 1px solid #eef7ee;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contact-input-group input:focus,
+.contact-input-group textarea:focus {
+  border-color: #3d8040;
+}
+
+.contact-input-group textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Info Bar */
+.contact-info-bar {
+  background: #1a3c1a;
+  padding: 40px 0;
+  margin-top: 50px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -60px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #fff;
+}
+
+.info-card__icon {
+  width: 60px;
+  height: 60px;
+  background: #3d8040;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.info-card__content h4 {
+  font-size: 14px;
+  color: #9be15d;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.info-card__content p,
+.info-card__content a {
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Map */
+.google-map-section iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .contact-page__left {
+    margin-bottom: 40px;
+  }
+  .contact-info-bar {
+    margin-bottom: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .info-card {
+    margin-bottom: 30px;
+    /* justify-content: center; */
+  }
+}

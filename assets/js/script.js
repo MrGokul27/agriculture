@@ -52,6 +52,37 @@ fetch(headerPath)
     initHeader();
   });
 
+// FOOTER COMPONENT
+const footerPath = isSubPage
+  ? "../components/footer.html"
+  : "components/footer.html";
+fetch(footerPath)
+  .then((res) => res.text())
+  .then((html) => {
+    const footerPlaceholder = document.getElementById("footer-placeholder");
+    if (footerPlaceholder) {
+      footerPlaceholder.innerHTML = html;
+      if (isSubPage) {
+        footerPlaceholder.querySelectorAll("img[src]").forEach((img) => {
+          const src = img.getAttribute("src");
+          if (src && src.startsWith("assets/"))
+            img.setAttribute("src", "../" + src);
+        });
+        footerPlaceholder.querySelectorAll("a[href]").forEach((a) => {
+          const href = a.getAttribute("href");
+          if (href === "index.html") {
+            a.setAttribute("href", "../index.html");
+          } else if (href === "404.html") {
+            a.setAttribute("href", "../404.html");
+          } else if (href && href.startsWith("pages/")) {
+            // Remove the "pages/" prefix because we are already in the pages directory
+            a.setAttribute("href", href.replace("pages/", ""));
+          }
+        });
+      }
+    }
+  });
+
 function initHeader() {
   // Mobile nested submenu toggle
   document
@@ -85,47 +116,53 @@ function initHeader() {
 }
 
 // SWIPER HERO
-const swiper = new Swiper(".heroSwiper", {
-  slidesPerView: 1,
-  loop: true,
-  effect: "fade",
-  fadeEffect: { crossFade: true },
-  autoplay: { delay: 7000, disableOnInteraction: false },
-  pagination: {
-    el: "#main-slider-pagination",
-    type: "bullets",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: "#main-slider__swiper-button-next",
-    prevEl: "#main-slider__swiper-button-prev",
-  },
-});
+if (document.querySelector(".heroSwiper")) {
+  new Swiper(".heroSwiper", {
+    slidesPerView: 1,
+    loop: true,
+    effect: "fade",
+    fadeEffect: { crossFade: true },
+    autoplay: { delay: 7000, disableOnInteraction: false },
+    pagination: {
+      el: "#main-slider-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: "#main-slider__swiper-button-next",
+      prevEl: "#main-slider__swiper-button-prev",
+    },
+  });
+}
 
 // SWIPER PROJECTS
-new Swiper(".projectsSwiper", {
-  loop: true,
-  autoplay: { delay: 3500, disableOnInteraction: false },
-  pagination: { el: ".projects-one__dots", clickable: true },
-  breakpoints: {
-    0: { slidesPerView: 1, spaceBetween: 20 },
-    576: { slidesPerView: 2, spaceBetween: 24 },
-    992: { slidesPerView: 3, spaceBetween: 30 },
-    1200: { slidesPerView: 4, spaceBetween: 30 },
-  },
-});
+if (document.querySelector(".projectsSwiper")) {
+  new Swiper(".projectsSwiper", {
+    loop: true,
+    autoplay: { delay: 3500, disableOnInteraction: false },
+    pagination: { el: ".projects-one__dots", clickable: true },
+    breakpoints: {
+      0: { slidesPerView: 1, spaceBetween: 20 },
+      576: { slidesPerView: 2, spaceBetween: 24 },
+      992: { slidesPerView: 3, spaceBetween: 30 },
+      1200: { slidesPerView: 4, spaceBetween: 30 },
+    },
+  });
+}
 
 // SWIPER TESTIMONIALS
-new Swiper(".testimonialsSwiper", {
-  loop: true,
-  autoplay: { delay: 4000, disableOnInteraction: false },
-  spaceBetween: 30,
-  navigation: { nextEl: ".tone-btn-next", prevEl: ".tone-btn-prev" },
-  breakpoints: {
-    0: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-  },
-});
+if (document.querySelector(".testimonialsSwiper")) {
+  new Swiper(".testimonialsSwiper", {
+    loop: true,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    spaceBetween: 30,
+    navigation: { nextEl: ".tone-btn-next", prevEl: ".tone-btn-prev" },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+    },
+  });
+}
 
 // COUNTER ANIMATION
 function animateCounter(el) {
@@ -163,7 +200,10 @@ document
 // GLOBAL REDIRECT FOR PLACEHOLDER LINKS
 document.addEventListener("click", function (e) {
   const target = e.target.closest("a");
-  if (target && target.getAttribute("href") === "#") {
+  if (!target) return;
+
+  const href = target.getAttribute("href");
+  if (href === null || href.trim() === "" || href === "#") {
     // Skip if it's a dropdown toggle (Bootstrap functionality)
     if (
       target.hasAttribute("data-bs-toggle") ||
