@@ -307,10 +307,12 @@ img {
   color: #333;
   transition: all 0.2s;
 }
-.main-navbar .dropdown-item:hover {
-  color: #3d8040;
-  background: #f5faf5;
+.main-navbar .dropdown-item:hover,
+.main-navbar .dropdown-item.active {
+  color: #3d8040 !important;
+  background: #f5faf5 !important;
   padding-left: 26px;
+  font-weight: 600;
 }
 
 /* Megamenu */

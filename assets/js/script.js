@@ -84,6 +84,32 @@ fetch(footerPath)
   });
 
 function initHeader() {
+  // Set active link
+  const path = window.location.pathname;
+  const currentPage = path.split("/").pop() || "index.html";
+
+  document
+    .querySelectorAll(".main-navbar .nav-link, .main-navbar .dropdown-item")
+    .forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      // Get the last part of the href to compare filenames
+      const linkFilename = href.split("/").pop();
+
+      if (linkFilename === currentPage) {
+        link.classList.add("active");
+        if (link.classList.contains("dropdown-item")) {
+          const dropdownToggle = link
+            .closest(".dropdown")
+            ?.querySelector(".nav-link");
+          if (dropdownToggle) dropdownToggle.classList.add("active");
+        } else {
+          link.closest(".nav-item")?.classList.add("active");
+        }
+      }
+    });
+
   // Mobile nested submenu toggle
   document
     .querySelectorAll(".dropdown-submenu > .dropdown-toggle")
